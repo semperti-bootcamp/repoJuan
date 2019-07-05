@@ -1,0 +1,15 @@
+--- # Para instalar oVirt Guest
+- name: Instalando oVirt Guest
+  yum:
+    name: ovirt-guest-agent-common
+    state: latest
+- name: Configurando para que arranque al inicio del sistema
+  systemd:
+    name: ovirt-guest-agent-common
+    enabled: yes
+     
+yum install ovirt-guest-agent-common
+Empezando el servicio
+systemctl start ovirt-guest-agent.service
+Viendo el estado 
+systemctl status ovirt-guest-agent.service

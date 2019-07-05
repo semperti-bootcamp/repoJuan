@@ -1,0 +1,17 @@
+--- # Para instalar EPEL
+- name: 1.Chequeando sí el repositorio EPEL está configurado.
+  stat: path={{ epel_repofile_path }}
+  register: epel_repofile_result
+
+- name: 2.Instalando el repositorio EPEL
+  yum:
+    name: "{{ epel_repo_url }}"
+    state: present
+  register: result
+  when: not epel_repofile_result.stat.exists
+
+- name: 3.Importando la clave de gpg de EPEL
+  rpm_key:
+    key: "{{ epel_repo_gpg_key_url }}"
+    state: present
+  when: not epel_repofile_result.stat.exists

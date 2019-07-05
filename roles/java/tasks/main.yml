@@ -1,0 +1,6 @@
+--- # Instalar Java OpenJDK 1.8
+ - name: Instalando java
+   yum:
+    name: java-1.8.0-openjdk.x86_64
+    state: latest
+        

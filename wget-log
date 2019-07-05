@@ -1,0 +1,11 @@
+--2019-06-12 18:15:51--  http://rhev-m.semperti.local/ovirt-engine/services/pki-resource?resource=ca-certificate
+Resolviendo rhev-m.semperti.local (rhev-m.semperti.local)... 10.252.7.69
+Conectando con rhev-m.semperti.local (rhev-m.semperti.local)[10.252.7.69]:80... conectado.
+Petición HTTP enviada, esperando respuesta... 200 OK
+Longitud: 1380 (1,3K) [application/x-x509-ca-cert]
+Grabando a: “CA-RHEV”
+
+CA-RHEV                                           0%[                                                                                                       ]       0  --.-KB/s               CA-RHEV                                         100%[======================================================================================================>]   1,35K  --.-KB/s    en 0s      
+
+2019-06-12 18:15:51 (293 MB/s) - “CA-RHEV” guardado [1380/1380]
+
