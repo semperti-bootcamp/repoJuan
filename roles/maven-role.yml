@@ -1,0 +1,4 @@
+---
+- hosts: bootCampJuan
+  roles:
+    - maven

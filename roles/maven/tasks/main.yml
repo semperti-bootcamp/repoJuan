@@ -1,0 +1,6 @@
+---
+# tasks file for maven
+ - name: Instalando maven
+   yum:
+     name: maven
+     state: latest
