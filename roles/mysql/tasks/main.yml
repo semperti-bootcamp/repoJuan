@@ -1,16 +1,53 @@
 ---
-- name: Agregar repositorio para install mysql
+- name: Agregando repositorio para install mysql
   yum_repository:
     name: mysql
     description: Repositorio yum para instalar MySQL
     baseurl: http://repo.mysql.com/yum/mysql-5.7-community/el/7/$basearch/
   
-- name: Agregar GPG key del repo de MySQL
+- name: Agregando la clave GPG del repo de MySQL
   rpm_key:
     state: present
     key: http://repo.mysql.com/RPM-GPG-KEY-mysql
 
-- name: Instalar mysql-server
+- name: Instalando mysql-server
   yum:
     name: mysql-server
     state: latest
+
+- name: Instalando mysql-python (se necesita para cambiar la clave del administrador de la base de datos con Ansible)
+  yum:
+    name: MySQL-python
+    state: latest
+
+- name: Arrancando MySQL Server y habilitarlo
+  service:
+    name: mysqld
+    state: started
+    enabled: yes
+
+
+- name: Change mysql root password and keep track in 
+  shell: |
+    password_match=`awk '/A temporary password is generated for/ {a=$0} END{ print a }' /var/log/mysqld.log | awk '{print $(NF)}'`
+    echo $password_match
+    mysql -uroot -p$password_match --connect-expired-password -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '"{{db_root_password}}"'; flush privileges; "
+    echo "[client]"
+    user=root
+    password="{{db_root_password}}" > /root/.my.cnf
+  args:
+    creates: /root/.my.cnf
+    #  register: change_temp_pass
+    #  notify: restart mysqld
+
+- name: restart mysqld
+  service: 
+    name: mysqld 
+    state: restarted
+
+- name: Configurando la clave de la base de datos
+  mysql_user:
+    name: juan
+    password: "{{db_root_password}}"
+    priv: '*.*:ALL'
+    state: present
