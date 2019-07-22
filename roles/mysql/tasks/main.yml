@@ -1,0 +1,16 @@
+---
+- name: Agregar repositorio para install mysql
+  yum_repository:
+    name: mysql
+    description: Repositorio yum para instalar MySQL
+    baseurl: http://repo.mysql.com/yum/mysql-5.7-community/el/7/$basearch/
+  
+- name: Agregar GPG key del repo de MySQL
+  rpm_key:
+    state: present
+    key: http://repo.mysql.com/RPM-GPG-KEY-mysql
+
+- name: Instalar mysql-server
+  yum:
+    name: mysql-server
+    state: latest
