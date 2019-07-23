@@ -26,28 +26,14 @@
     state: started
     enabled: yes
 
-
-- name: Change mysql root password and keep track in 
+- name: Cambiando la clave aleatoria por omisión de MySQL
   shell: |
     password_match=`awk '/A temporary password is generated for/ {a=$0} END{ print a }' /var/log/mysqld.log | awk '{print $(NF)}'`
     echo $password_match
     mysql -uroot -p$password_match --connect-expired-password -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '"{{db_root_password}}"'; flush privileges; "
-    echo "[client]"
-    user=root
-    password="{{db_root_password}}" > /root/.my.cnf
-  args:
-    creates: /root/.my.cnf
-    #  register: change_temp_pass
-    #  notify: restart mysqld
+    echo -e ""[client]"\nuser=root\npassword="{{db_root_password}}"" > /root/.my.cnf
 
 - name: restart mysqld
   service: 
     name: mysqld 
     state: restarted
-
-- name: Configurando la clave de la base de datos
-  mysql_user:
-    name: juan
-    password: "{{db_root_password}}"
-    priv: '*.*:ALL'
-    state: present
