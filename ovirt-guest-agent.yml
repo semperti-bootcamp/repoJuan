@@ -1,0 +1,25 @@
+--- # Para instalar oVirt Guest en centOS primero hay que habilitar el repositorio EPEL
+- hosts: bootCampJuan
+  tasks:
+  - name: Agregando repositorio EPEL
+    yum_repository:
+      name: epel
+      description: Repositorio EPEL
+      baseurl: "https://dl.fedoraproject.org/pub/epel/{{ ansible_distribution_major_version }}/$basearch/"
+  - name: Agregando la clave GPG de EPEL
+    rpm_key:
+      state: present
+      key: "https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}"
+  - name: Instalando ovirt-guest-agent
+    yum:
+      name: ovirt-guest-agent-common
+      state: latest
+  - name: Instalando oVirt Guest
+    yum:
+      name: ovirt-guest-agent-common
+      state: latest
+  - name: Configurando para que arranque al inicio del sistema y empezando el servicio
+    systemd:
+      name: ovirt-guest-agent.service
+      enabled: yes
+      state: started

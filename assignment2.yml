@@ -1,0 +1,7 @@
+--- # Playbook para completar lo requerido en el punto dos del BootCamp
+
+- hosts: bootCampJuan
+  roles:
+    - role: java
+    - role: maven
+    - role: mysql
