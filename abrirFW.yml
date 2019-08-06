@@ -1,0 +1,5 @@
+--- 
+- hosts: bootCampJuan
+  tasks:
+    - name: Se corre el script para abrir el puerto TCP 8080
+      script: abrirFW.sh

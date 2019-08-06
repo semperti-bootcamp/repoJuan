@@ -1,0 +1,12 @@
+---
+- hosts: local
+- name: Cargando la clave ssh
+  shell: |
+      ssh-add ~/.ssh/id_rsa
+
+- hosts: webserver
+  tasks:
+      - name: Asegurándose de que el repo quede actualizado
+        git:
+            repo: git@github.com/semperti-bootcamp/week01.git
+            dest: semperti-bootcamp/week01

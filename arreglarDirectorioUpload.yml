@@ -1,0 +1,5 @@
+--- 
+- hosts: bootCampJuan
+  tasks:
+    - name: Se corre el script para modificar el en _source code_ el directorio donde se guardan los .PDFs
+      script: arreglarDirectorioUpload.sh
