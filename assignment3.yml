@@ -1,0 +1,7 @@
+--- # Playbook para realizar los pasos de la assignmet 3 todos juntos
+- hosts: bootCampJuan
+- name: Importando los playbooks de la assignment 3
+  import_playbook: abrirFW.yml
+  import_playbook: clonarRepoBootcamp.yml
+  import_playbook: arreglarDirectorioUpload.yml
+  import_playbook: configuracionDB.yml

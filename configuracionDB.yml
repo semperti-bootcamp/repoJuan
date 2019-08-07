@@ -1,0 +1,12 @@
+---
+- name: Configurando la Base de Datos
+  hosts: bootCampJuan 
+  vars_files:
+    - secrets.yml
+  tasks:
+    - name: Definiendo la contraseña para el usuario root en la base de datos
+      lineinfile:
+        dest: ~/semperti-bootcamp/week01/Code/src/main/resources/application.properties
+        regexp: 'spring.datasource.password='
+        line: 'spring.datasource.password= {{ db_root_password }}'
+        backrefs: yes
