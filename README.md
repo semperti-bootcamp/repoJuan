@@ -16,3 +16,7 @@ Definí un rol para cada uno de los prerequisitos de la aplicación y los instal
 ```
 $ ansible-playbook assiginment2.yml
 ```
+
+
+# PARA HACER
+Encontrar cómo traer algo de un branch posterior. Puntualmente, quiero el archivo secrets.yml porque después de hacer la assignment2 encontré un método mejor para que no quede una password en texto plano en GitHub.
