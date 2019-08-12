@@ -99,5 +99,11 @@
             </plugin>
         </plugins>
     </build>
-
+    <distributionManagement>
+        <repository>
+    	    <id>maven-releases</id>
+    	    <name>repoNexusReleases</name>
+    	    <url>http://10.252.7.162:8081/repository/maven-releases/</url>
+    	    </repository>
+        </repositories>
 </project>
