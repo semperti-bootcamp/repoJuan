@@ -11,7 +11,7 @@
         insertafter: "  <servers>"
         block: |
               <server>
-                <id>maven-releases</id>
+                <id>maven-credentials</id>
                 <username>{{ nexusUserName }}</username>
                 <password>{{ nexusPassword }}</password>
               </server>

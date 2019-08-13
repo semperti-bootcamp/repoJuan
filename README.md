@@ -9,12 +9,12 @@ En el pom.xml hay que agregar una entrada para el repositorio de los snapshots y
 ```
     <distributionManagement>
         <repository>
-            <id>maven-releases</id>
+            <id>maven-credentials</id>
             <name>repoNexusReleases</name>
             <url>http://10.252.7.162:8081/repository/maven-releases/</url>
         </repository>
         <snapshotRepository>
-            <id>maven-snapshots</id>
+            <id>maven-credentials</id>
             <name>repoNexusSnapshots</name>
             <url>http://10.252.7.162:8081/repository/maven-snapshots/</url>
         </snapshotRepository>
