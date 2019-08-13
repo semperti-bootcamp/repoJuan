@@ -104,6 +104,11 @@
     	    <id>maven-releases</id>
     	    <name>repoNexusReleases</name>
     	    <url>http://10.252.7.162:8081/repository/maven-releases/</url>
-    	    </repository>
-        </repositories>
+        </repository>
+	<snapshotRepository>
+    	    <id>maven-snapshots</id>
+    	    <name>repoNexusSnapshots</name>
+    	    <url>http://10.252.7.162:8081/repository/maven-snapshots/</url>
+	</snapshotRepository>
+    </distributionManagment>
 </project>
