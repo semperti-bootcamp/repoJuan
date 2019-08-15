@@ -1,0 +1,13 @@
+--- 
+- hosts: bootCampJuan
+  tasks:
+    - name: Instalando Docker
+      yum:
+        name: docker
+        state: latest
+
+    - name: Habilitando e iniciando Docker
+      service: 
+        name: docker
+        state: started
+        enabled: yes
